@@ -81,6 +81,7 @@ app.put("/item/:id", async (req, res) => {
         body.push(id)
 
         const url = "UPDATE item_table SET" + set.join(',') + " WHERE id = $" + count;
+        console.log(url);
         await pool.query(url, body);
         res.json({ 'status': 200, 'message': 'Item has been updated' });
     } catch (error) {
